@@ -1,0 +1,45 @@
+body
+{
+	background-image: url('../img/fond.jpg');
+	background-repeat: repeat-x;
+	margin: 0;
+	padding: 0;
+}
+
+#global
+{
+	height: 600px;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#title
+{
+	color: white;
+	text-align: center;
+}
+
+#menu
+{
+	display: inline-block;
+	width: 200px;
+	height: 500px;
+	border: 2px solid white;
+	float: left;
+}
+
+#menu a
+{
+	display: block;
+}
+
+#content
+{
+	display: inline-block;
+	width: 790px;
+	margin-left: 2px;
+	height: 500px;
+	border: 2px solid white;
+}
+
