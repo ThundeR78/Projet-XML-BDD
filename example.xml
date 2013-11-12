@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?> 
+<sgbd version="0.1">
+	<database creationDate="12/10/2013">
+		<name>Projet XML</name>
+		<author>Julien Wetstein</author>
+		<tables>
+			<table creationDate="12/10/2013">
+				<name>User</name>
+				<type>InnoDB</type>
+				<inter>UTF-8</inter>
+				<size unity="ko">16</size>
+				<nbEnreg>3</nbEnreg>
+				<fields>
+					<field null="false">
+						<name>id</name>
+						<type>int</type>
+						<extra>AUTO_INCREMENT</extra>
+						<values>
+							<value>1</value>
+							<value>2</value>
+							<value>3</value>
+						</values>
+					</field>
+					<field null="false">
+						<name>firstname</name>
+						<type>text</type>
+						<default>Julien</default>
+						<values>
+							<value>Jean</value>
+							<value>Thomas</value>
+							<value>Maxime</value>
+						</values>
+					</field>
+					<field null="false">
+						<name>lastname</name>
+						<type>text</type>
+						<values>
+							<value>Dujardin</value>
+							<value>Desbordes</value>
+							<value>Desbordes</value>
+						</values>
+					</field>
+					<field null="true">
+						<name>age</name>
+						<type>int</type>
+						<values>
+							<value>40</value>
+							<value>24</value>
+							<value>24</value>
+						</values>
+					</field>
+				</fields>
+			</table>
+			<table creationDate="12/10/2013">
+				<name>Item</name>
+				<type>InnoDB</type>
+				<inter>UTF-8</inter>
+				<size unity="ko">4</size>
+				<nbEnreg>2</nbEnreg>
+				<fields>
+					<field null="false">
+						<name>id</name>
+						<type>int</type>
+						<extra>AUTO_INCREMENT</extra>
+						<values>
+							<value>1</value>
+							<value>2</value>
+							<value>3</value>
+						</values>
+					</field>
+					<field null="false">
+						<name>title</name>
+						<type>text</type>
+						<default>Truc</default>
+						<values>
+							<value>Savonette</value>
+							<value>PQ</value>
+							<value>Brosse à dent</value>
+						</values>
+					</field>
+				</fields>
+			</table>
+		</tables>
+		<size unity="ko">20</size>
+		<inter>UTF-8</inter>
+		<nbEnreg>2</nbEnreg>
+	</database>
+
+</sgbd>
