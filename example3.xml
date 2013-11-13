@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?> 
+<sgbd version="0.1" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:esgi="http://esgi-xml" 
+	xsi:noNamespaceSchemaLocation="schema-db.xsd" 
+	xsi:schemaLocation="http://esgi-xml.schema-db.xsd">
+	
+	<database creationDate="12/10/2013">
+		<name>Projet XML</name>
+		<author>Julien Wetstein</author>
+		<tables>
+			<table creationDate="12/10/2013">
+				<name>User</name>
+				<type>InnoDB</type>
+				<inter>UTF-8</inter>
+				<size unity="ko">16</size>
+				<nbEnreg>3</nbEnreg>
+				<struct>
+					<field name="id" type="int" size="10" extra="AUTO_INCREMENT" null="false" default="" />
+					<field name="nom" type="varchar" size="30" extra="" null="true" default="Zerbit" />
+					<field name="prenom" type="varchar" size="30" extra="" null="true" default="Julien" />
+				</struct>
+				<rows>
+					<row>
+						<id>1</id>
+						<nom>Zerbit</nom>
+						<prenom>Julien</prenom>
+					</row>
+					<row>
+						<id>2</id>
+						<nom>Wetstein</nom>
+						<prenom>Julien</prenom>
+					</row>
+					<row>
+						<id>3</id>
+						<nom>Grosgojat</nom>
+						<prenom>Kevin</prenom>
+					</row>
+				</rows>
+			</table>
+		</tables>
+</sgbd>
