@@ -1,0 +1,38 @@
+#loginDiv
+{
+	width: 300px;
+	height: 150px;
+	border: 5px solid white;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	padding-top: 30px;
+}
+
+input
+{
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	padding: 3px;
+}
+
+#loginError
+{
+	width: 300px;
+	height: 20px;
+	background-color: #f84747;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	padding: 5px;
+	color: white;
+	font-weight: bold;
+	margin-top: 10px;
+}
