@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <?php
+session_start();
 	if(isset($_POST['connect']))
 	{
 		if(isset($_POST['username']) && isset($_POST['password']))
@@ -11,9 +11,12 @@
 				{
 					if(($user->username == $_POST['username']) && ($user->password == $_POST['password']))
 					{
-						print("ok");
+						$_SESSION['id'] = $user->id;
+						$_SESSION['username'] = $user->username;
+						header("Location : ./welcome.php");
 					}
 				}
+				$error = "Utilisateur inconnu !";
 			}
 			else
 				$error = "Erreur ouverture fichier user";
@@ -23,6 +26,7 @@
 	}
 
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
