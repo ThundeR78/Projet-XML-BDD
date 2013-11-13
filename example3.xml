@@ -4,7 +4,7 @@
 	xmlns:esgi="http://esgi-xml" 
 	xsi:noNamespaceSchemaLocation="schema-db.xsd" 
 	xsi:schemaLocation="http://esgi-xml.schema-db.xsd">
-	
+
 	<database creationDate="12/10/2013">
 		<name>Projet XML</name>
 		<author>Julien Wetstein</author>
