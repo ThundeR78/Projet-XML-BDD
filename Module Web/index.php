@@ -4,7 +4,19 @@
 	{
 		if(isset($_POST['username']) && isset($_POST['password']))
 		{
-			
+			if (file_exists('./xml/user.xml')) 
+			{
+				$users = simplexml_load_file('./xml/user.xml');
+				foreach($users as $user)
+				{
+					if(($user->username == $_POST['username']) && ($user->password == $_POST['password']))
+					{
+						print("ok");
+					}
+				}
+			}
+			else
+				$error = "Erreur ouverture fichier user";
 		}
 		else
 			$error = "Tous les champs sont obligatoires";

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?> 
+<users version="0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:esgi="http://esgi-xml"  xsi:noNamespaceSchemaLocation="schema-user.xsd"  xsi:schemaLocation="http://esgi-xml.schema-user.xsd">
+	<user>
+		<id>1</id>
+		<username>julien</username>
+		<password>julien</password>
+		<droits>7</droits>
+	</user>	
+	<user>
+		<id>2</id>
+		<username>kevin</username>
+		<password>kevin</password>
+		<droits>5</droits>
+	</user>
+	<user>
+		<id>3</id>
+		<username>jwet</username>
+		<password>thunder</password>
+		<droits>3</droits>
+	</user>		
+
+</users>
