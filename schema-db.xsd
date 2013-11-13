@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://esgi-xml" 
+	xmlns="http://esgi-xml"
+	elementFormDefault="qualified">
+
+    <xsd:element name="sgbd">
+        <xsd:complexType>
+            <xsd:sequence maxOccrus="unBounded">
+                <xsd:element name="database">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <!-- <xsd:element name="identite">
+                                <xsd:complexType>
+                                    <xsd:sequence>
+                                        <xsd:element name="nom" type="xsd:string" />
+                                        <xsd:element name="prenom" type="xsd:string" />
+                                        <xsd:element name="statut" type="xsd:string" />
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+                            <xsd:element name="contacts">
+                                <xsd:complexType>
+                                    <xsd:sequence minOccurs="0" maxOccrus="3">
+                                        <xsd:element name="contact">
+                                            <xsd:complexType>
+                                                <xsd:sequence maxOccrus="10">
+                                                    <xsd:element name="numero" type="xsd:int" />
+                                                    <xsd:element name="mail" type="xsd:string" />
+                                                </xsd:sequence>
+                                            </xsd:complexType>
+                                        </xsd:element>
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element> -->
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
