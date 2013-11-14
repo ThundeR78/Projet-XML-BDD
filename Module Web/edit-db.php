@@ -9,7 +9,6 @@ session_start();
 
 	if (file_exists($path_xml)) {
 		$xml = simplexml_load_file($path_xml);
-		// var_dump($xml);
 
 		$listDB = "<ul>";
 		foreach($xml->database as $db)	{

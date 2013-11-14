@@ -16,7 +16,10 @@
 				<size unity="ko">16</size>
 				<nbEnreg>3</nbEnreg>
 				<struct>
-					<field name="id" type="int" size="10" extra="AUTO_INCREMENT" null="false" default="" />
+					<field name="id" type="int" size="10" extra="AUTO_INCREMENT" null="false" default="">
+						<primaryKey>true</primaryKey>
+						<foreignKey table="Order" field="userId" />
+					</field>
 					<field name="nom" type="varchar" size="30" extra="" null="true" default="Zerbit" />
 					<field name="prenom" type="varchar" size="30" extra="" null="true" default="Julien" />
 				</struct>
