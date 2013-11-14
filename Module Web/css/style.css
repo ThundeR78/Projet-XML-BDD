@@ -20,26 +20,3 @@ body
 	text-align: center;
 }
 
-#menu
-{
-	display: inline-block;
-	width: 200px;
-	height: 500px;
-	border: 2px solid white;
-	float: left;
-}
-
-#menu a
-{
-	display: block;
-}
-
-#content
-{
-	display: inline-block;
-	width: 790px;
-	margin-left: 2px;
-	height: 500px;
-	border: 2px solid white;
-}
-

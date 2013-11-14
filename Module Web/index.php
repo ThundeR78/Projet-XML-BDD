@@ -1,30 +1,40 @@
 <?php
 session_start();
-	if(isset($_POST['connect']))
+if(isset($_POST['connect']))
+{
+	if(isset($_POST['username']) && isset($_POST['password']))
 	{
-		if(isset($_POST['username']) && isset($_POST['password']))
+		if (file_exists('./xml/user.xml')) 
 		{
-			if (file_exists('./xml/user.xml')) 
+			$find = false;
+			$users = simplexml_load_file('./xml/user.xml');
+			foreach($users as $user)
 			{
-				$users = simplexml_load_file('./xml/user.xml');
-				foreach($users as $user)
+				if(($user->username == $_POST['username']) && ($user->password == $_POST['password']))
 				{
-					if(($user->username == $_POST['username']) && ($user->password == $_POST['password']))
-					{
-						$_SESSION['id'] = $user->id;
-						$_SESSION['username'] = $user->username;
-						header("Location : ./welcome.php");
-					}
+					$_SESSION['id'] = (string)$user->id;
+					$_SESSION['username'] = (string)$user->username;
+					$find = true;
+					break;
 				}
-				$error = "Utilisateur inconnu !";
+			}
+			if($find)
+			{
+				$host  = $_SERVER['HTTP_HOST'];
+				$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+				$extra = 'welcome.php';
+				header("Location: http://$host$uri/$extra");
+				exit;
 			}
 			else
-				$error = "Erreur ouverture fichier user";
+				$error = "Utilisateur inconnu !";
 		}
 		else
-			$error = "Tous les champs sont obligatoires";
+			$error = "Erreur ouverture fichier user";
 	}
-
+	else
+		$error = "Tous les champs sont obligatoires";
+}
 ?>
 <!DOCTYPE html>
 <html>
