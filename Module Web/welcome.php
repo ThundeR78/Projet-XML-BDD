@@ -17,9 +17,9 @@ session_start();
 		<div id="global">
 			<h1 id="title">Projet XML - Partie WEB</h1>
 			<div id="menu">
-				<a href="">Ajouter une base</a>
-				<a href="">Editer une base</a>
-				<a href="">Insérer des valeurs</a>
+				<a href="add-db.php">Ajouter une base</a>
+				<a href="edit-db.php">Editer une base</a>
+				<a href="insert-table.php">Insérer des valeurs</a>
 			</div>
 			<div id="content">
 				titi tototiti tototiti tototiti tototiti tototiti tototiti tototiti tototiti tototiti tototiti tototiti toto
