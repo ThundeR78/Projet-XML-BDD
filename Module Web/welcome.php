@@ -26,14 +26,18 @@ session_start();
 				<a onclick="setContent('bdd', 'users')">BDD</a>
 				<a onclick="setContent('users', 'bdd')">Users</a>
 			</div>
-			<div id="menu">
-			</div>
-			<div id="content">
-				<div id="bdd">
+			<div id="bdd">
+				<div id="menu">
+				</div>
+				<div id="content">
 					totoBdd
 				</div>
-				
-				<div id="users">
+			</div>
+			
+			<div id="users">
+				<div id="menu">
+				</div>
+				<div id="content">
 					totoUser
 				</div>
 			</div>
