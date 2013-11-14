@@ -12,10 +12,9 @@ session_start();
 
 		$listDB = "<ul>";
 		foreach($xml->database as $db)	{
-			$listDB .= '<li>'. $db->name .'</li>';
+			$listDB .= '<li><a href="">'. $db->name .'</a></li>';
 		}
 		$listDB .= "</ul>";
-
 	}
 	else
 		$error = "Erreur ouverture fichier ".$file_xml;
