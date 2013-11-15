@@ -37,9 +37,9 @@ session_start();
 				$ok = $xml->asXML($path_xml);
 
 				if ($ok)
-					$labelAction = '<h4 class="label_success">Enregistrement bien effectué !</h4>';
+					$labelAction = '<h4 class="label_result label_success">Enregistrement bien effectué !</h4>';
 				else 
-					$labelAction = '<h4 class="label_error">Erreur durant l\'enregistrement !</h4>';
+					$labelAction = '<h4 class="label_result label_error">Erreur durant l\'enregistrement !</h4>';
 			} else if ($_POST["action"] == "insert") {	//Action Insert
 				$lastId = intval($xml->user[count($xml->user) -1]->id);
 				
@@ -54,9 +54,9 @@ session_start();
 				$ok = $xml->asXML($path_xml);
 
 				if ($ok)
-					$labelAction = '<h4 class="label_success">Insertion bien effectué !</h4>';
+					$labelAction = '<h4 class="label_result label_success">Insertion bien effectué !</h4>';
 				else 
-					$labelAction = '<h4 class="label_error">Erreur durant l\'insertion !</h4>';
+					$labelAction = '<h4 class="label_result label_error">Erreur durant l\'insertion !</h4>';
 			}	
 		}
 
@@ -94,7 +94,7 @@ session_start();
 				else
 					$detailUser .= '<option value="'.$value.'">'.$value.'</option>';
 			}
-			$detailUser .= '</select><br />';
+			$detailUser .= '</select><br /><br />';
 			$detailUser .= '<input type="submit" value="Mettre à jour">';
 			$detailUser .= '</form>';
 		} else {
@@ -109,7 +109,7 @@ session_start();
 			$detailUser .= '<option value="3">3</option>';
 			$detailUser .= '<option value="5">5</option>';
 			$detailUser .= '<option value="7">7</option>';
-			$detailUser .= '</select><br />';
+			$detailUser .= '</select><br /><br />';
 			$detailUser .= '<input type="submit" value="Ajouter">';
 			$detailUser .= '</form>';
 		}
@@ -124,6 +124,7 @@ session_start();
 		<title>Projet XML</title>
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/welcome.css" />
+		<link rel="stylesheet" type="text/css" href="css/users.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 		<script type="text/javascript">
 			function setContent(toShow, toHide) 
