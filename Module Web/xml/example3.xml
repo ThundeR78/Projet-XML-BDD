@@ -7,7 +7,7 @@
 
 	<database creationDate="12/10/2013">
 		<name>Projet XML</name>
-		<author>Julien Wetstein</author>
+		<author>julien</author>
 		<tables>
 			<table creationDate="12/10/2013">
 				<name>User</name>
@@ -38,6 +38,41 @@
 						<id>3</id>
 						<nom>Grosgojat</nom>
 						<prenom>Kevin</prenom>
+					</row>
+				</rows>
+			</table>
+		</tables>
+	</database>
+
+	<database creationDate="20/10/2013">
+		<name>Projet BDD</name>
+		<author>jwet</author>
+		<tables>
+			<table creationDate="21/10/2013">
+				<name>User</name>
+				<type>InnoDB</type>
+				<inter>UTF-8</inter>
+				<size unity="ko">16</size>
+				<nbEnreg>3</nbEnreg>
+				<struct>
+					<field name="id" type="int" size="10" extra="AUTO_INCREMENT" null="false" default="">
+						<primaryKey>true</primaryKey>
+						<foreignKey table="Order" field="userId" />
+					</field>
+					<field name="name" type="varchar" size="30" extra="" null="true" default="Zerbite" />
+				</struct>
+				<rows>
+					<row>
+						<id>1</id>
+						<name>Zerbite</name>
+					</row>
+					<row>
+						<id>2</id>
+						<name>Wetsteine</name>
+					</row>
+					<row>
+						<id>3</id>
+						<name>Grosgojate</name>
 					</row>
 				</rows>
 			</table>

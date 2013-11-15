@@ -62,7 +62,25 @@ footer {
 {
 	display: inline-block;
 	width: 790px;
+	padding: 10px;
 	margin-left: 2px;
 	height: 480px;
 	border: 2px solid white;
+	box-sizing: border-box;
+}
+
+
+.label_result {
+	color: white;
+	text-align: center;
+	padding: 15px;
+	font-size: 20px;
+	margin: 0;
+}
+.label_success {
+	background-color: green;
+}
+
+.label_error {
+	background-color: red;
 }

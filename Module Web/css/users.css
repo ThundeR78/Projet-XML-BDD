@@ -20,18 +20,3 @@
 #users form, #users h2 {
 	margin: 10px;
 }
-
-.label_result {
-	color: white;
-	text-align: center;
-	padding: 15px;
-	font-size: 20px;
-	margin: 0;
-}
-.label_success {
-	background-color: green;
-}
-
-.label_error {
-	background-color: red;
-}

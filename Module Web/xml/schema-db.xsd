@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://esgi-xml" 
+	xmlns="http://esgi-xml"
+	elementFormDefault="qualified">
+
+    <xs:simpleType name="typeValue">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="int" />
+            <xs:enumeration value="varchar" />
+            <xs:enumeration value="char" />
+            <xs:enumeration value="float" />
+            <xs:enumeration value="decimal" />
+            <xs:enumeration value="real" />
+            <xs:enumeration value="smallint" />
+            <xs:enumeration value="bit" />
+            <xs:enumeration value="date" />
+            <xs:enumeration value="time" />
+            <xs:enumeration value="datetime" />
+            <xs:enumeration value="text" />
+            <xs:enumeration value="boolean" />
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xsd:element name="sgbd">
+        <xsd:complexType>
+            <xsd:sequence maxOccrus="unBounded">
+
+                <xsd:element name="database">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="name" type="xsd:string" />
+                            <xsd:element name="author" type="xsd:string" />
+                                
+                            <xsd:element name="tables">
+                                <xsd:complexType>
+                                    <xsd:sequence minOccurs="0" maxOccrus="unBounded">
+
+                                        <xsd:element name="table">
+                                            <xsd:complexType>
+                                                <xsd:sequence>
+                                                    <xsd:element name="name" type="xsd:string" />
+                                                    <xsd:element name="type" type="xsd:string" />
+                                                    <xsd:element name="inter" type="xsd:string" />
+                                                    <xsd:element name="size" type="xsd:int">
+                                                        <xsd:complexType>
+                                                            <xs:attribute name="lang" type="xs:string"/>
+                                                        </xsd:complexType>
+                                                    </xsd:element>
+                                                    <xsd:element name="nbEnreg" type="xsd:int" />
+
+                                                    <xsd:element name="struc">
+                                                        <xsd:complexType>
+                                                            <xsd:sequence maxOccrus="unBounded">
+
+                                                                <xsd:element name="field">
+                                                                    <xsd:complexType>
+                                                                        <xs:attribute name="name" type="xs:string" />
+                                                                        <xs:attribute name="type" type="typeValue" />
+                                                                        <xs:attribute name="size" type="xs:int" />
+                                                                        <xs:attribute name="extra" type="xs:string" />
+                                                                        <xs:attribute name="default" type="xs:string" />
+                                                                        <xs:attribute name="null" type="xs:string" />
+                                                                        <xsd:element name="primaryKey" type="xs:boolean" />
+                                                                        <xsd:element name="field">
+                                                                            <xsd:complexType>
+                                                                                <xs:attribute name="table" type="xs:string" />
+                                                                                <xs:attribute name="field" type="xs:string" />
+                                                                            </xsd:complexType>
+                                                                        </xsd:element>
+                                                                </xsd:element>
+
+                                                            </xsd:sequence>
+                                                        </xsd:complexType>
+                                                    </xsd:element>
+
+                                                    <xsd:element name="rows">
+                                                        <xsd:complexType>
+                                                            <xsd:sequence maxOccrus="unBounded">
+
+                                                                <xsd:element name="row">
+                                                                    <xsd:complexType>
+                                                                        <!-- TODO -->
+                                                                    </xsd:complexType>
+                                                                </xsd:element>
+
+                                                            </xsd:sequence>
+                                                        </xsd:complexType>
+                                                    </xsd:element>
+
+                                                </xsd:sequence>
+                                                <xsd:attribute name="creationDate" type="xsd:date" use="required" />
+                                            </xsd:complexType>
+                                        </xsd:element>
+
+                                    </xsd:sequence>
+                                </xsd:complexType>
+                            </xsd:element>
+
+                        </xsd:sequence>
+                        <xsd:attribute name="creationDate" type="xsd:date" use="required" /> 
+                    </xsd:complexType>
+                </xsd:element>
+
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
