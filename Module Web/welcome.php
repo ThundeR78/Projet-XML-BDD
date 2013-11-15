@@ -16,6 +16,9 @@ session_start();
 			{ 
 				$("#"+toHide).hide();
 				$("#"+toShow).show();
+
+				if (toShow == "users")
+					location.href='users.php';
 			}
 		</script>
 	</head>  
@@ -30,14 +33,11 @@ session_start();
 			
 			<?php include('bdd.php'); ?>
 			
-			<div id="users">
-				<div id="menu">
-				</div>
-				<div id="content">
-					totoUser
-				</div>
-			</div>
+			<!-- <?php //include('users2.php'); ?> -->
+
+			<footer>
+				<h4>Made in ESGI - Julien Wetstein, Julien Zerbit, Kevin Grosgojat</h4>
+			</footer>
 		</div>
 	</body>
-	
 </html>
