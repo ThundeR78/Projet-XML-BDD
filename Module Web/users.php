@@ -19,45 +19,57 @@ session_start();
 			//Load file
 			$xml = simplexml_load_file($path_xml);
 
+			if (isset($id))
+				$user = $xml->xpath("/users/user[id='".$id."']")[0];
+
 			$username = $_POST["username"];
 			$password = $_POST["password"];
 			$grant = $_POST["grant"];
 
 			if ($_POST["action"] == "edit") {		//Action Edit	
 				//Update user nodes
-				foreach($xml->user as $u) {
-					if (isset($id) && $u->id == $id) {
-						$u->username = $username;
-						$u->password = $password;
-						$u->droits = $grant;
-					}
-				}
+				// foreach($xml->user as $u) {
+				// 	if (isset($id) && $u->id == $id) {
+				$user->username = $username;
+				$user->password = $password;
+				$user->droits = $grant;
+				// 	}
+				// }
 
-				//Save file
-				$ok = $xml->asXML($path_xml);
-
-				if ($ok)
-					$labelAction = '<h4 class="label_result label_success">Enregistrement bien effectué !</h4>';
-				else 
-					$labelAction = '<h4 class="label_result label_error">Erreur durant l\'enregistrement !</h4>';
-			} else if ($_POST["action"] == "insert") {	//Action Insert
+				$labelSuccess = 'Enregistrement bien effectué !';	
+				$labelError = 'Erreur durant l\'enregistrement !';
+			} 
+			else if ($_POST["action"] == "insert") {	//Action Insert
 				$lastId = intval($xml->user[count($xml->user) -1]->id);
-				
+				$id = $lastId +1;
+
 				//Add user nodes
 				$newUser = $xml->addChild('user');
-				$newUser->addChild('id', $lastId +1);
+				$newUser->addChild('id', $id);
 				$newUser->addChild('username', $username);
 				$newUser->addChild('password', $password);
 				$newUser->addChild('droits', $grant);
 
-				//Save file
-				$ok = $xml->asXML($path_xml);
+				$labelSuccess = 'Insertion bien effectué !';	
+				$labelError = 'Erreur durant l\'insertion !';
+			} 
+			else if ($_POST["action"] == "delete") {	//Action Delete
+				$dom = dom_import_simplexml($user);
+				$dom->parentNode->removeChild($dom);
 
-				if ($ok)
-					$labelAction = '<h4 class="label_result label_success">Insertion bien effectué !</h4>';
-				else 
-					$labelAction = '<h4 class="label_result label_error">Erreur durant l\'insertion !</h4>';
+				unset($id);
+
+				$labelSuccess = 'Suppression bien effectué !';	
+				$labelError = 'Erreur durant la suppression !';
 			}	
+
+			//Save file
+			$ok = $xml->asXML($path_xml);
+
+			if ($ok)
+				$labelAction = '<h4 class="label_result label_success">'.$labelSuccess.'</h4>';
+			else 
+				$labelAction = '<h4 class="label_result label_error">'.$labelError.'</h4>';
 		}
 
 		//Load file
@@ -67,9 +79,6 @@ session_start();
 		$listUser = "<ul>";
 		foreach($xml->user as $u) {
 			$listUser .= '<li><a href="users.php?id='.$u->id.'">'.$u->username.'</a></li>';
-
-			if (isset($id) && $u->id == $id)
-				$user = $u;
 		}
 		$listUser .= "</ul>";
 
@@ -80,9 +89,11 @@ session_start();
 
 		if (isset($id)) {
 			//Edit Form
+			$user = $xml->xpath("/users/user[id='".$id."']")[0];
+			
 			$detailUser .= "<h2>Edition d'un User</h2>";
 			$detailUser .= '<form action="users.php" method="post">';
-			$detailUser .= '<input type="hidden" name="action" value="edit">';
+			$detailUser .= '<input id="actionForm" type="hidden" name="action" value="edit">';
 			$detailUser .= '<input type="hidden" name="id" value="'.$user->id.'">';
 			$detailUser .= 'Username : <input id="editUsername" type="text" name="username" value="'.$user->username.'" /><br />';
 			$detailUser .= 'Password : <input id="editPassword" type="password" name="password" value="'.$user->password.'" /><br />';
@@ -96,6 +107,7 @@ session_start();
 			}
 			$detailUser .= '</select><br /><br />';
 			$detailUser .= '<input type="submit" value="Mettre à jour" onclick="return checkForm();">';
+			$detailUser .= '<input type="submit" value="Supprimer" onclick="deleteUser();">';
 			$detailUser .= '</form>';
 		} else {
 			//Insert Form
@@ -143,6 +155,10 @@ session_start();
 					alert("Tous les champs ne sont pas valides !");
 					return false;
 				}
+			}
+
+			function deleteUser() {
+				document.getElementById("actionForm").value = "delete";
 			}
 		</script>
 	</head>  
