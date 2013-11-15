@@ -19,6 +19,8 @@ session_start();
 
 				if (toShow == "users")
 					location.href='users.php';
+				else if (toShow == "search")
+					location.href='search.php';
 			}
 		</script>
 	</head>  
@@ -29,6 +31,7 @@ session_start();
 			<div id="tabBar">
 				<a onclick="setContent('bdd', 'users')">BDD</a>
 				<a onclick="setContent('users', 'bdd')">Users</a>
+				<a onclick="setContent('search', 'bdd')">Recherche</a>
 			</div>
 			
 			<?php include('bdd.php'); ?>

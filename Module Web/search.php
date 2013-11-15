@@ -163,16 +163,17 @@ session_start();
 	<body>
 		<?php include("header.php"); ?>
 
-		<div id="users">
-			<div id="menu">
-				<button onclick="location.href='users.php'">Ajouter un User</button>
-				<?php echo $listUser; ?>
+			<div id="users">
+				<div id="menu">
+					<button onclick="location.href='users.php'">Ajouter un User</button>
+					<?php echo $listUser; ?>
+				</div>
+				<div id="content">
+					<?php echo $detailUser; ?>
+				</div>
 			</div>
-			<div id="content">
-				<?php echo $detailUser; ?>
-			</div>
-		</div>
-
+		
 		<?php include("footer.php"); ?>
 	</body>
+	
 </html>
