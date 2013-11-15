@@ -66,10 +66,13 @@ session_start();
 			//Save file
 			$ok = $xml->asXML($path_xml);
 
-			if ($ok)
-				$labelAction = '<h4 class="label_result label_success">'.$labelSuccess.'</h4>';
-			else 
-				$labelAction = '<h4 class="label_result label_error">'.$labelError.'</h4>';
+			if ($ok) {
+				$alertAction = '<script type="text/javascript"> alert("'.$labelSuccess.'"); </script>';
+				// $alertAction = '<h4 class="label_result label_success">'.$labelSuccess.'</h4>';
+			} else {
+				$alertAction = '<script type="text/javascript"> alert('.$labelError.'); </script>';
+				// $alertAction = '<h4 class="label_result label_error">'.$labelError.'</h4>';
+			}
 		}
 
 		//Load file
@@ -84,9 +87,6 @@ session_start();
 
 		//Display Form
 		$detailUser = "";
-		if (isset($labelAction))
-			$detailUser .= $labelAction;
-
 		if (isset($id)) {
 			//Edit Form
 			$user = $xml->xpath("/users/user[id='".$id."']")[0];
@@ -125,6 +125,9 @@ session_start();
 			$detailUser .= '<input type="submit" value="Ajouter" onclick="return checkForm();">';
 			$detailUser .= '</form>';
 		}
+
+		if (isset($alertAction))
+			$detailUser .= $alertAction;
 	}
 	else
 		$error = "Erreur ouverture fichier ".$file_xml;
@@ -139,12 +142,6 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="css/users.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 		<script type="text/javascript">
-			function setContent(toShow, toHide) 
-			{ 
-				$("#"+toHide).hide();
-				$("#"+toShow).show();
-			}
-
 			function checkForm() {
 				var u = document.getElementById("editUsername").value;
 				var p = document.getElementById("editPassword").value;
@@ -163,21 +160,13 @@ session_start();
 		</script>
 	</head>  
 	
-	<body onload="setContent('users', 'bdd')">
+	<body>
 		<div id="global">
 			<h1 id="title">Projet XML - Partie WEB</h1>
 			<div id="tabBar">
 				<a href="welcome.php">BDD</a>
 				<a href="users.php">Users</a>
 			</div>
-			<div id="bdd">
-				<div id="menu">
-				</div>
-				<div id="content">
-					totoBdd
-				</div>
-			</div>
-			
 			<div id="users">
 				<div id="menu">
 					<button onclick="location.href='users.php'">Ajouter un User</button>
