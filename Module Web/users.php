@@ -8,12 +8,60 @@ session_start();
 	$path_xml = 'xml/'.$file_xml.'.xml';
 
 	if (file_exists($path_xml)) {
-		$xml = simplexml_load_file($path_xml);
-
+		//Store id
 		if (isset($_GET["id"]))
 			$id = $_GET["id"];
 		else if (isset($_POST["id"]))
 			$id = $_POST["id"];
+
+		//Action User
+		if (isset($_POST["action"])) {
+			//Load file
+			$xml = simplexml_load_file($path_xml);
+
+			$username = $_POST["username"];
+			$password = $_POST["password"];
+			$grant = $_POST["grant"];
+
+			if ($_POST["action"] == "edit") {		//Action Edit	
+				//Update user nodes
+				foreach($xml->user as $u) {
+					if (isset($id) && $u->id == $id) {
+						$u->username = $username;
+						$u->password = $password;
+						$u->droits = $grant;
+					}
+				}
+
+				//Save file
+				$ok = $xml->asXML($path_xml);
+
+				if ($ok)
+					$labelAction = '<h4 class="label_success">Enregistrement bien effectué !</h4>';
+				else 
+					$labelAction = '<h4 class="label_error">Erreur durant l\'enregistrement !</h4>';
+			} else if ($_POST["action"] == "insert") {	//Action Insert
+				$lastId = intval($xml->user[count($xml->user) -1]->id);
+				
+				//Add user nodes
+				$newUser = $xml->addChild('user');
+				$newUser->addChild('id', $lastId +1);
+				$newUser->addChild('username', $username);
+				$newUser->addChild('password', $password);
+				$newUser->addChild('droits', $grant);
+
+				//Save file
+				$ok = $xml->asXML($path_xml);
+
+				if ($ok)
+					$labelAction = '<h4 class="label_success">Insertion bien effectué !</h4>';
+				else 
+					$labelAction = '<h4 class="label_error">Erreur durant l\'insertion !</h4>';
+			}	
+		}
+
+		//Load file
+		$xml = simplexml_load_file($path_xml);
 
 		//List User
 		$listUser = "<ul>";
@@ -25,22 +73,11 @@ session_start();
 		}
 		$listUser .= "</ul>";
 
-		//Action User
-		if (isset($_POST["action"])) {
-			$username = $_POST["username"];
-			$password = $_POST["password"];
-			$grant = $_POST["grant"];
-
-			if ($_POST["action"] == "edit") 
-
-				$labelAction = '<h4></h4>';
-			else if ($_POST["action"] == "insert") 
-				$labelAction = '<h4></h4>';
-		}
-
-		$detailUser = "";
-
 		//Display Form
+		$detailUser = "";
+		if (isset($labelAction))
+			$detailUser .= $labelAction;
+
 		if (isset($id)) {
 			//Edit Form
 			$detailUser .= "<h2>Edition d'un User</h2>";
@@ -76,7 +113,6 @@ session_start();
 			$detailUser .= '<input type="submit" value="Ajouter">';
 			$detailUser .= '</form>';
 		}
-
 	}
 	else
 		$error = "Erreur ouverture fichier ".$file_xml;

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?> 
-<users version="0.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esgi="http://esgi-xml" xsi:noNamespaceSchemaLocation="schema-user.xsd"  xsi:schemaLocation="http://esgi-xml.schema-user.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:esgi="http://esgi-xml" version="0.1" xsi:noNamespaceSchemaLocation="schema-user.xsd" xsi:schemaLocation="http://esgi-xml.schema-user.xsd">
 	<user>
 		<id>1</id>
 		<username>julien</username>
@@ -14,9 +14,8 @@
 	</user>
 	<user>
 		<id>3</id>
-		<username>jwet</username>
+		<username>jwetstein</username>
 		<password>thunder</password>
-		<droits>3</droits>
+		<droits>7</droits>
 	</user>		
-
 </users>
