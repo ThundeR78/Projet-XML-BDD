@@ -10,6 +10,7 @@ session_start();
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/welcome.css" />
 		<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/bdd.js"></script>
 		<script type="text/javascript">
 			function setContent(toShow, toHide) 
 			{ 
@@ -26,13 +27,8 @@ session_start();
 				<a onclick="setContent('bdd', 'users')">BDD</a>
 				<a onclick="setContent('users', 'bdd')">Users</a>
 			</div>
-			<div id="bdd">
-				<div id="menu">
-				</div>
-				<div id="content">
-					totoBdd
-				</div>
-			</div>
+			
+			<?php include('bdd.php'); ?>
 			
 			<div id="users">
 				<div id="menu">
